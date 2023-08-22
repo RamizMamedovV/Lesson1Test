@@ -1,11 +1,45 @@
-string[] arr = { "Hello", "2", "world", ":-)" };
-string[] newArr = new string[2];
+string[] array = { "Hello", "2522", "world", ":-)," };
 
+int res = 3;
+int length = CheckLength(array, res);
+string[] newArray = CreateArray(length, res, array);
+printArray(newArray);
 
-Console.Write("[ ");
-for (int i = 0; i < newArr.Length; i++)
+int CheckLength(string[] arr, int lenLetters)
 {
-    newArr[i] = arr[i];
-    Console.Write($"'{newArr[i]}' ");
+    int count = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i].Length <= lenLetters)
+        {
+            count += 1;
+        }
+    }
+    return count;
 }
-Console.Write("]");
+
+string[] CreateArray(int lenArray, int lenLetters, string[] arr)
+{
+    string[] newArr = new string[lenArray];
+    int cnt = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i].Length <= lenLetters)
+        {
+            newArr[cnt] = arr[i];
+            cnt += 1;
+        }
+    }
+    return newArr;
+}
+
+void printArray(string[] arr)
+{
+    Console.Write("[ ");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        arr[i] = arr[i];
+        Console.Write($"'{arr[i]}' ");
+    }
+    Console.Write("]");
+}
